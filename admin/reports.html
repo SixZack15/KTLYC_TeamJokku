@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports & Statistics - VLU KTX</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+             <div class="sidebar-header"><img src="https://www.vlu.edu.vn/images/logo-van-lang-800.png" alt="VLU Logo" class="logo"><h3>Admin Portal</h3></div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html">Trang chủ</a></li>
+                    <li><a href="review_registrations.html">Duyệt hồ sơ đăng ký</a></li>
+                    <li><a href="handle_transfer.html">Xử lý chuyển phòng</a></li>
+                    <li><a href="payment_confirm.html">Quản lý thanh toán</a></li>
+                    <li><a href="checkout_process.html">Xử lý trả phòng</a></li>
+                    <li><a href="configuration.html">Cấu hình hệ thống</a></li>
+                    <li class="active"><a href="reports.html">Báo cáo & Thống kê</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="header">
+                <div class="search-bar"><input type="text" placeholder="Tìm kiếm chức năng, sinh viên..."></div>
+                <div class="user-profile"><span id="admin-name">Chị B</span><a href="../index.html" class="logout-btn">Logout</a></div>
+            </header>
+            <div class="content-body">
+                <h3>Thống kê & Báo cáo</h3>
+                <div class="form-layout">
+                    <h4>Tạo báo cáo mới</h4>
+                     <div class="form-grid">
+                        <div class="form-group">
+                            <label for="report-type">Chọn loại báo cáo</label>
+                            <select id="report-type">
+                                <option value="Báo cáo điện nước">Báo cáo điện nước</option>
+                                <option value="Báo cáo phòng ở">Báo cáo tình trạng phòng ở</option>
+                                <option value="Báo cáo sinh viên">Báo cáo danh sách sinh viên</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="date-range">Chọn kỳ báo cáo</label>
+                            <select id="date-range">
+                                <option value="Tháng 10/2025">Tháng 10/2025</option>
+                                <option value="Quý 4/2025">Quý 4/2025</option>
+                                <option value="Năm 2025">Năm 2025</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button id="generate-report-btn" class="btn">Tạo báo cáo</button>
+                    </div>
+                </div>
+
+                <div id="report-output" class="card-info" style="margin-top: 30px; display: none;">
+                    <h4>Kết quả báo cáo (Giả lập)</h4>
+                    <p>Đã tạo thành công <strong id="report-title-output"></strong> cho kỳ <strong id="report-range-output"></strong>.</p>
+                    <p>Nhấn vào nút bên dưới để tải về.</p>
+                    <div class="form-actions" style="justify-content: flex-start;">
+                        <button id="download-pdf-btn" class="btn btn-danger">Xuất PDF</button>
+                        <button id="download-excel-btn" class="btn btn-secondary" style="background-color: #1D6F42;">Xuất Excel</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../js/state_manager.js"></script>
+    <script src="../js/reports.js"></script>
+</body>
+</html>

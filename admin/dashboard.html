@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - VLU KTX</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="https://www.vlu.edu.vn/images/logo-van-lang-800.png" alt="VLU Logo" class="logo">
+                <h3>Admin Portal</h3>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active"><a href="dashboard.html">Trang chủ</a></li>
+                    <li><a href="review_registrations.html">Duyệt hồ sơ đăng ký</a></li>
+                    <li><a href="handle_transfer.html">Xử lý chuyển phòng</a></li>
+                    <li><a href="payment_confirm.html">Quản lý thanh toán</a></li>
+                    <li><a href="checkout_process.html">Xử lý trả phòng</a></li>
+                    <li><a href="configuration.html">Cấu hình hệ thống</a></li>
+                    <li><a href="reports.html">Báo cáo & Thống kê</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="header">
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm chức năng, sinh viên...">
+                </div>
+                <div class="user-profile">
+                    <span id="admin-name">Chị B</span>
+                    <a href="../index.html" class="logout-btn">Logout</a>
+                </div>
+            </header>
+            <div class="content-body">
+                <h3>Tổng quan hoạt động</h3>
+                <div class="cards-container">
+                    <div class="card-info interactive" id="pending-registrations-card" style="border-color: var(--warning-color);">
+                        <h4>Hồ sơ chờ duyệt</h4>
+                        <p class="metric" id="pending-registrations-count">0</p>
+                        <a href="review_registrations.html" class="details-link">Xem danh sách</a>
+                    </div>
+                    <div class="card-info interactive" id="pending-transfers-card" style="border-color: var(--warning-color);">
+                        <h4>Yêu cầu chuyển phòng</h4>
+                        <p class="metric" id="pending-transfers-count">0</p>
+                        <a href="handle_transfer.html" class="details-link">Xem danh sách</a>
+                    </div>
+                    <div class="card-info" id="available-slots-card" style="border-color: var(--success-color);">
+                        <h4>Phòng trống</h4>
+                        <p class="metric" id="available-slots-count">0</p>
+                        <span>chỗ ở có sẵn</span>
+                    </div>
+                     <div class="card-info" id="expiring-contracts-card" style="border-color: var(--danger-color);">
+                        <h4>Hợp đồng sắp hết hạn</h4>
+                        <p class="metric" id="expiring-contracts-count">0</p>
+                        <span>cần gia hạn/xử lý</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../js/state_manager.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+</html>

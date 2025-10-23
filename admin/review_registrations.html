@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Registrations - VLU KTX</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="https://www.vlu.edu.vn/images/logo-van-lang-800.png" alt="VLU Logo" class="logo">
+                <h3>Admin Portal</h3>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html">Trang chủ</a></li>
+                    <li class="active"><a href="review_registrations.html">Duyệt hồ sơ đăng ký</a></li>
+                    <li><a href="handle_transfer.html">Xử lý chuyển phòng</a></li>
+                    <li><a href="payment_confirm.html">Quản lý thanh toán</a></li>
+                    <li><a href="checkout_process.html">Xử lý trả phòng</a></li>
+                    <li><a href="configuration.html">Cấu hình hệ thống</a></li>
+                    <li><a href="reports.html">Báo cáo & Thống kê</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="header">
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm chức năng, sinh viên...">
+                </div>
+                <div class="user-profile">
+                    <span id="admin-name">Chị B</span>
+                    <a href="../index.html" class="logout-btn">Logout</a>
+                </div>
+            </header>
+            <div class="content-body">
+                <h3>Duyệt hồ sơ đăng ký mới (<span id="queue-count">0</span>)</h3>
+                <div class="split-view-container">
+                    <!-- Left Panel: List of pending students -->
+                    <div class="list-panel">
+                        <div id="pending-list" class="item-list">
+                            <!-- Student items will be populated by JS -->
+                        </div>
+                    </div>
+                    <!-- Right Panel: Details of selected student -->
+                    <div class="detail-panel">
+                        <div id="select-prompt" class="card-info">
+                            <p>Vui lòng chọn một sinh viên từ danh sách để xem chi tiết.</p>
+                        </div>
+                        <div id="verification-panel" style="display: none;">
+                            <h4 id="student-name-header"></h4>
+                            <div class="card-info">
+                                <!-- Step 2: Verification -->
+                                <h5>Kiểm tra thông tin sinh viên</h5>
+                                <div class="verification-checks">
+                                    <p><strong>Trạng thái SV:</strong> <span id="vlu-status-check"></span></p>
+                                    <p><strong>Phí tháng đầu:</strong> <span id="fee-status-check"></span></p>
+                                </div>
+                                <div id="rejection-reason" class="alert-message alert-danger" style="display: none;"></div>
+                            </div>
+                            <div class="card-info">
+                                <!-- Step 3: Room Assignment -->
+                                <h5>Kiểm tra và cập nhật phòng</h5>
+                                <div class="form-group">
+                                    <label for="room-selector">Chọn phòng trống</label>
+                                    <select id="room-selector">
+                                        <!-- Rooms will be populated by JS -->
+                                    </select>
+                                </div>
+                            </div>
+                             <!-- Step 4: Action Buttons -->
+                            <div class="form-actions">
+                                <button id="reject-btn" class="btn btn-danger">Từ chối</button>
+                                <button id="approve-btn" class="btn">Nhận phòng</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../js/state_manager.js"></script>
+    <script src="../js/review_registrations.js"></script>
+</body>
+</html>

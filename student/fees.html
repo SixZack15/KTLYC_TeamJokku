@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fee Payment - VLU KTX</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="https://www.vlu.edu.vn/images/logo-van-lang-800.png" alt="VLU Logo" class="logo">
+                <h3>KTX Portal</h3>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html">Trang chủ</a></li>
+                    <li><a href="register.html">Đăng ký phòng</a></li>
+                    <li class="active"><a href="fees.html">Thanh toán phí</a></li>
+                    <li><a href="transfer_request.html">Yêu cầu chuyển phòng</a></li>
+                    <li><a href="checkout_request.html">Yêu cầu trả phòng</a></li>
+                    <li><a href="incident_report.html">Báo cáo sự cố</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="header">
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm chức năng, sinh viên...">
+                </div>
+                <div class="user-profile">
+                    <span>Nguyễn Văn A</span>
+                    <a href="../index.html" class="logout-btn">Logout</a>
+                </div>
+            </header>
+            <div class="content-body">
+                
+                <!-- Main View: Invoice List -->
+                <div id="invoice-list-view">
+                    <h3>Danh sách hoá đơn</h3>
+                    <div id="payment-alert" class="notification-banner" style="display: none;">
+                        Cảnh báo: Bạn có hoá đơn quá hạn. Vui lòng thanh toán ngay để tránh bị khoá chức năng.
+                    </div>
+                    <div class="card-info" style="border-left: none;">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Mã hoá đơn</th>
+                                    <th>Kỳ thanh toán</th>
+                                    <th>Loại phí</th>
+                                    <th>Tổng tiền (VND)</th>
+                                    <th>Hạn thanh toán</th>
+                                    <th>Trạng thái</th>
+                                    <th>Hành động</th>
+                                </tr>
+                            </thead>
+                            <tbody id="invoice-table-body">
+                                <!-- Rows populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Simulated Payment Gateway View -->
+                <div id="payment-gateway-view" style="display: none;">
+                    <div class="gateway-container">
+                        <div class="gateway-header">
+                            <img src="https://vnpay.vn/s1/statics.vnpay.vn/2023/9/06ncktiwd6dc1694418196384.png" alt="VNPAY Simulator" style="height: 40px;">
+                            <h4>Cổng thanh toán giả lập</h4>
+                        </div>
+                        <div class="gateway-body">
+                            <p><strong>Đơn hàng:</strong> Thanh toán phí KTX - <span id="gateway-invoice-id"></span></p>
+                            <p><strong>Số tiền:</strong> <span id="gateway-amount" class="metric-finance"></span> VND</p>
+                            
+                            <h5>Chọn phương thức thanh toán:</h5>
+                            <div class="payment-methods">
+                                <label class="method-option">
+                                    <input type="radio" name="payment-method" value="atm" checked>
+                                    Thẻ ATM / Tài khoản ngân hàng
+                                </label>
+                                <label class="method-option">
+                                    <input type="radio" name="payment-method" value="qr">
+                                    Ứng dụng Mobile Banking (QR Code)
+                                </label>
+                            </div>
+
+                            <div id="atm-form" class="gateway-form">
+                                <div class="form-group">
+                                    <label>Số thẻ</label>
+                                    <input type="text" placeholder="9704 xxxx xxxx xxxx" value="9704 1999 8888 7777">
+                                </div>
+                                <div class="form-group">
+                                    <label>Tên chủ thẻ</label>
+                                    <input type="text" placeholder="NGUYEN VAN A" value="NGUYEN VAN A">
+                                </div>
+                                <div class="form-group">
+                                    <label>Ngày phát hành</label>
+                                    <input type="text" placeholder="MM/YY" value="01/25">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gateway-footer">
+                            <button id="cancel-payment-btn" class="btn btn-secondary">Huỷ giao dịch</button>
+                            <button id="confirm-payment-btn" class="btn">Xác nhận thanh toán</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h4 style="color: var(--success-color);">Thanh toán thành công!</h4>
+            <p>Giao dịch của bạn đã được ghi nhận. Hệ thống đã cập nhật trạng thái hoá đơn.</p>
+            <button class="btn" id="close-success-modal-btn">Đóng</button>
+        </div>
+    </div>
+
+    <script src="../js/state_manager.js"></script>
+    <script src="../js/fees.js"></script>
+</body>
+</html>

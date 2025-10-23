@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check-Out Request - VLU KTX</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="https://www.vlu.edu.vn/images/logo-van-lang-800.png" alt="VLU Logo" class="logo">
+                <h3>KTX Portal</h3>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html">Trang chủ</a></li>
+                    <li><a href="register.html">Đăng ký phòng</a></li>
+                    <li><a href="fees.html">Thanh toán phí</a></li>
+                    <li><a href="transfer_request.html">Yêu cầu chuyển phòng</a></li>
+                    <li class="active"><a href="checkout_request.html">Yêu cầu trả phòng</a></li>
+                    <li><a href="incident_report.html">Báo cáo sự cố</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="header">
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm chức năng, sinh viên...">
+                </div>
+                <div class="user-profile">
+                    <span>Nguyễn Văn A</span>
+                    <a href="../index.html" class="logout-btn">Logout</a>
+                </div>
+            </header>
+            <div class="content-body">
+                <div id="checkout-request-view">
+                    <h3>Nộp đơn kết thúc ở KTX</h3>
+                    <div id="prerequisite-alert-checkout" class="alert-message alert-danger" style="display: none;"></div>
+                    <form id="checkout-form" class="form-layout">
+                        <div class="form-group">
+                            <label for="departure-date">Ngày trả phòng dự kiến</label>
+                            <input type="date" id="departure-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkout-reason">Lý do</label>
+                            <textarea id="checkout-reason" rows="4" placeholder="Vui lòng nêu lý do bạn muốn trả phòng (ví dụ: Tốt nghiệp, chuyển chỗ ở,...)" required></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" id="submit-checkout-btn" class="btn">Gửi đơn</button>
+                        </div>
+                    </form>
+                </div>
+                <div id="status-view-checkout" style="display: none;">
+                    <div class="card-info">
+                        <h4>Đã gửi đơn thành công</h4>
+                        <p>Yêu cầu trả phòng của bạn đã được ghi nhận. Vui lòng chú ý các bước tiếp theo.</p>
+                        <div class="alert-message alert-info">
+                            <strong>Thông báo lịch kiểm tra trả phòng/tài sản:</strong> BQL KTX sẽ liên hệ với bạn để sắp xếp lịch kiểm tra phòng và tài sản trước ngày trả phòng. Vui lòng đảm bảo phòng ốc sạch sẽ và tài sản không bị hư hại.
+                        </div>
+                        <a href="dashboard.html" class="btn">Về trang chủ</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../js/state_manager.js"></script>
+    <script src="../js/checkout_request.js"></script>
+</body>
+</html>

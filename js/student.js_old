@@ -1,0 +1,97 @@
+// js/student.js
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Simulate student data based on different states
+    const studentData = {
+        // State 1: Active student with a contract nearing expiry
+        active_expiring: {
+            hasRoom: true,
+            contractDays: 25,
+            debt: 750000,
+            paymentDeadline: '25/10/2025',
+            latestRequest: {
+                id: '#YC-105',
+                type: 'Chuyển phòng',
+                status: 'Đã xử lý'
+            }
+        },
+        // State 2: Student with no room registered
+        no_room: {
+            hasRoom: false,
+        },
+        // State 3: Active student with a pending request
+        active_pending: {
+            hasRoom: true,
+            contractDays: 125,
+            debt: 750000,
+            paymentDeadline: '25/10/2025',
+            latestRequest: {
+                id: '#YC-108',
+                type: 'Trả phòng',
+                status: 'Chờ xử lý'
+            }
+        }
+    };
+
+    // Choose a state to simulate. Change this to 'no_room' or 'active_pending' to test other scenarios.
+    const currentState = studentData.active_expiring; 
+
+    // Function to update the UI based on the current state
+    function populateDashboard() {
+        if (currentState.hasRoom) {
+            // Show room info and hide the registration prompt
+            document.getElementById('room-info').style.display = 'block';
+            document.getElementById('no-room-prompt').style.display = 'none';
+
+            // Populate contract days
+            document.getElementById('contract-days').textContent = currentState.contractDays;
+
+            // Check for expiring contract and show banner
+            if (currentState.contractDays < 30) {
+                const banner = document.getElementById('notification-banner');
+                banner.textContent = `Hợp đồng của bạn sẽ hết hạn sau ${currentState.contractDays} ngày. Vui lòng gia hạn sớm.`;
+                banner.style.display = 'block';
+            }
+
+            // Populate financial info
+            document.getElementById('total-debt').textContent = currentState.debt.toLocaleString('vi-VN');
+            document.getElementById('payment-deadline').textContent = currentState.paymentDeadline;
+
+            // Populate latest request
+            const request = currentState.latestRequest;
+            document.getElementById('latest-request').innerHTML = `
+                <p><strong>ID:</strong> ${request.id}</p>
+                <p><strong>Loại:</strong> ${request.type}</p>
+                <p><strong>Trạng thái:</strong> <span id="request-status">${request.status}</span></p>
+            `;
+            
+            // Apply status color coding
+            const statusEl = document.getElementById('request-status');
+            if (request.status === 'Đã xử lý') {
+                statusEl.className = 'status-approved';
+            } else if (request.status === 'Chờ xử lý') {
+                statusEl.className = 'status-pending';
+            } else {
+                statusEl.className = 'status-rejected';
+            }
+
+        } else {
+            // Hide all cards except the registration prompt
+            document.querySelector('.cards-container').querySelectorAll('.card-info').forEach(card => {
+                card.style.display = 'none';
+            });
+            const roomInfoCard = document.querySelector('.card-info'); // First card
+            roomInfoCard.style.display = 'block';
+            document.getElementById('room-info').style.display = 'none';
+            document.getElementById('no-room-prompt').style.display = 'block';
+        }
+    }
+
+    // Add event listener for the interactive fees card
+    document.getElementById('fees-card').addEventListener('click', function() {
+        window.location.href = 'fees.html';
+    });
+    
+    // Initial population of the dashboard
+    populateDashboard();
+});

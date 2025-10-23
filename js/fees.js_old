@@ -1,0 +1,112 @@
+// js/fees.js
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Simulated Invoice Data
+    let invoices = [
+        { id: 'HD-1023', period: 'Tháng 10/2025', type: 'Tiền phòng + Điện/Nước', amount: 750000, deadline: '25/10/2025', status: 'Unpaid' },
+        { id: 'HD-0923', period: 'Tháng 09/2025', type: 'Tiền phòng + Điện/Nước', amount: 820000, deadline: '25/09/2025', status: 'Overdue' },
+        { id: 'HD-0823', period: 'Tháng 08/2025', type: 'Tiền phòng + Điện/Nước', amount: 780000, deadline: '25/08/2025', status: 'Paid' }
+    ];
+
+    const invoiceTableBody = document.getElementById('invoice-table-body');
+    const paymentAlert = document.getElementById('payment-alert');
+    const invoiceListView = document.getElementById('invoice-list-view');
+    const paymentGatewayView = document.getElementById('payment-gateway-view');
+    const successModal = document.getElementById('success-modal');
+
+    let currentInvoiceToPay = null;
+
+    function renderInvoices() {
+        invoiceTableBody.innerHTML = '';
+        let hasOverdue = false;
+
+        invoices.forEach(inv => {
+            const row = document.createElement('tr');
+            let statusBadge = '';
+            let actionBtn = '';
+
+            if (inv.status === 'Paid') {
+                statusBadge = '<span class="badge badge-paid">Đã thanh toán</span>';
+                actionBtn = '<button class="btn btn-secondary btn-sm" disabled>Đã trả</button>';
+            } else if (inv.status === 'Overdue') {
+                statusBadge = '<span class="badge badge-overdue">Quá hạn</span>';
+                actionBtn = `<button class="btn btn-sm pay-btn" data-id="${inv.id}">Thanh toán ngay</button>`;
+                hasOverdue = true;
+                row.classList.add('row-overdue'); // Visual flag for whole row
+            } else {
+                statusBadge = '<span class="badge badge-unpaid">Chưa thanh toán</span>';
+                actionBtn = `<button class="btn btn-sm pay-btn" data-id="${inv.id}">Thanh toán</button>`;
+            }
+
+            row.innerHTML = `
+                <td><strong>${inv.id}</strong></td>
+                <td>${inv.period}</td>
+                <td>${inv.type}</td>
+                <td style="font-weight: bold;">${inv.amount.toLocaleString('vi-VN')}</td>
+                <td>${inv.deadline}</td>
+                <td>${statusBadge}</td>
+                <td>${actionBtn}</td>
+            `;
+            invoiceTableBody.appendChild(row);
+        });
+
+        // Toggle alert based on overdue status (BR2 enforcement)
+        paymentAlert.style.display = hasOverdue ? 'block' : 'none';
+    }
+
+    // Event Delegation for "Pay" buttons
+    invoiceTableBody.addEventListener('click', function(e) {
+        if (e.target.classList.contains('pay-btn')) {
+            const invoiceId = e.target.dataset.id;
+            currentInvoiceToPay = invoices.find(inv => inv.id === invoiceId);
+            
+            // Setup Gateway
+            document.getElementById('gateway-invoice-id').textContent = currentInvoiceToPay.id;
+            document.getElementById('gateway-amount').textContent = currentInvoiceToPay.amount.toLocaleString('vi-VN');
+            
+            // Switch views
+            invoiceListView.style.display = 'none';
+            paymentGatewayView.style.display = 'flex'; // Use flex to center the gateway
+        }
+    });
+
+    // Gateway Actions
+    document.getElementById('cancel-payment-btn').addEventListener('click', function() {
+        paymentGatewayView.style.display = 'none';
+        invoiceListView.style.display = 'block';
+    });
+
+    document.getElementById('confirm-payment-btn').addEventListener('click', function() {
+        // Simulate processing delay then success
+        const btn = this;
+        btn.textContent = 'Đang xử lý...';
+        btn.disabled = true;
+
+        setTimeout(() => {
+            // Update invoice status
+            if (currentInvoiceToPay) {
+                currentInvoiceToPay.status = 'Paid';
+            }
+            renderInvoices(); // Re-render table
+
+            // Reset gateway view
+            paymentGatewayView.style.display = 'none';
+            invoiceListView.style.display = 'block';
+            btn.textContent = 'Xác nhận thanh toán';
+            btn.disabled = false;
+
+            // Show success modal
+            successModal.style.display = 'flex';
+        }, 1500);
+    });
+
+    // Modal Actions
+    document.querySelector('.close-modal').addEventListener('click', () => successModal.style.display = 'none');
+    document.getElementById('close-success-modal-btn').addEventListener('click', () => successModal.style.display = 'none');
+    window.addEventListener('click', (e) => {
+        if (e.target === successModal) successModal.style.display = 'none';
+    });
+
+    // Initial Render
+    renderInvoices();
+});

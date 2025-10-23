@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incident Report - VLU KTX</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="https://www.vlu.edu.vn/images/logo-van-lang-800.png" alt="VLU Logo" class="logo">
+                <h3>KTX Portal</h3>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html">Trang chủ</a></li>
+                    <li><a href="register.html">Đăng ký phòng</a></li>
+                    <li><a href="fees.html">Thanh toán phí</a></li>
+                    <li><a href="transfer_request.html">Yêu cầu chuyển phòng</a></li>
+                    <li><a href="checkout_request.html">Yêu cầu trả phòng</a></li>
+                    <li class="active"><a href="incident_report.html">Báo cáo sự cố</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="header">
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm chức năng, sinh viên...">
+                </div>
+                <div class="user-profile">
+                    <span>Nguyễn Văn A</span>
+                    <a href="../index.html" class="logout-btn">Logout</a>
+                </div>
+            </header>
+            <div class="content-body">
+                <div id="report-view">
+                    <h3>Báo cáo sự cố / Yêu cầu sửa chữa</h3>
+                    <form id="incident-form" class="form-layout">
+                        <div class="form-group">
+                            <label for="incident-type">Loại sự cố</label>
+                            <select id="incident-type" required>
+                                <option value="">-- Chọn loại sự cố --</option>
+                                <option value="Điện">Điện (đèn, ổ cắm)</option>
+                                <option value="Nước">Nước (vòi, ống nước)</option>
+                                <option value="Nội thất">Nội thất (giường, tủ, bàn)</option>
+                                <option value="Khác">Khác</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="incident-details">Mô tả chi tiết</label>
+                            <textarea id="incident-details" rows="5" placeholder="Vui lòng mô tả rõ ràng sự cố bạn gặp phải..." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="incident-image">Đính kèm hình ảnh (tùy chọn)</label>
+                            <input type="file" id="incident-image">
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn">Gửi báo cáo</button>
+                        </div>
+                    </form>
+                </div>
+                <div id="status-view" style="display: none;">
+                    <div class="card-info">
+                        <h4>Báo cáo đã được gửi</h4>
+                        <p>Yêu cầu của bạn đã được gửi đến bộ phận kỹ thuật. Trạng thái hiện tại là <span class="status-pending">Chờ xử lý</span>.</p>
+                        <p>Bạn có thể theo dõi tiến trình trên trang chủ. BQL sẽ xử lý trong thời gian sớm nhất.</p>
+                        <a href="dashboard.html" class="btn">Về trang chủ</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../js/state_manager.js"></script>
+    <script src="../js/incident_report.js"></script>
+</body>
+</html>

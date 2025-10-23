@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Transfer Request - VLU KTX</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="https://www.vlu.edu.vn/images/logo-van-lang-800.png" alt="VLU Logo" class="logo">
+                <h3>KTX Portal</h3>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html">Trang chủ</a></li>
+                    <li><a href="register.html">Đăng ký phòng</a></li>
+                    <li><a href="fees.html">Thanh toán phí</a></li>
+                    <li class="active"><a href="transfer_request.html">Yêu cầu chuyển phòng</a></li>
+                    <li><a href="checkout_request.html">Yêu cầu trả phòng</a></li>
+                    <li><a href="incident_report.html">Báo cáo sự cố</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="header">
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm chức năng, sinh viên...">
+                </div>
+                <div class="user-profile">
+                    <span>Nguyễn Văn A</span>
+                    <a href="../index.html" class="logout-btn">Logout</a>
+                </div>
+            </header>
+            <div class="content-body">
+                <div id="transfer-request-view">
+                    <h3>Nộp hồ sơ xin chuyển phòng</h3>
+                    <div id="prerequisite-alert" class="alert-message" style="display: none;"></div>
+                    <form id="transfer-form" class="form-layout">
+                        <div class="form-group">
+                            <label>Phòng hiện tại</label>
+                            <input type="text" id="current-room" value="A201" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-room">Chọn phòng/giường mới</label>
+                            <select id="new-room" required>
+                                <!-- Options populated by JS -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="transfer-reason">Lý do chi tiết</label>
+                            <textarea id="transfer-reason" rows="4" placeholder="Vui lòng nêu rõ lý do bạn muốn chuyển phòng..." required></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" id="submit-transfer-btn" class="btn">Gửi yêu cầu</button>
+                        </div>
+                    </form>
+                </div>
+                <div id="status-view" style="display: none;">
+                    <div class="card-info">
+                        <h4>Yêu cầu đã được gửi</h4>
+                        <p>Yêu cầu chuyển phòng của bạn đã được gửi đến BQL KTX. Trạng thái hiện tại là <span class="status-pending">Chờ xử lý</span>.</p>
+                        <p>Bạn có thể theo dõi tiến trình trên trang chủ. Vui lòng đợi thông báo tiếp theo.</p>
+                        <a href="dashboard.html" class="btn">Về trang chủ</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../js/state_manager.js"></script>
+    <script src="../js/transfer_request.js"></script>
+</body>
+</html>

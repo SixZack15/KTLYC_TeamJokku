@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Configuration - VLU KTX</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header"><img src="https://www.vlu.edu.vn/images/logo-van-lang-800.png" alt="VLU Logo" class="logo"><h3>Admin Portal</h3></div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html">Trang chủ</a></li>
+                    <li><a href="review_registrations.html">Duyệt hồ sơ đăng ký</a></li>
+                    <li><a href="handle_transfer.html">Xử lý chuyển phòng</a></li>
+                    <li><a href="payment_confirm.html">Quản lý thanh toán</a></li>
+                    <li><a href="checkout_process.html">Xử lý trả phòng</a></li>
+                    <li class="active"><a href="configuration.html">Cấu hình hệ thống</a></li>
+                    <li><a href="reports.html">Báo cáo & Thống kê</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="header">
+                <div class="search-bar"><input type="text" placeholder="Tìm kiếm chức năng, sinh viên..."></div>
+                <div class="user-profile"><span id="admin-name">Chị B</span><a href="../index.html" class="logout-btn">Logout</a></div>
+            </header>
+            <div class="content-body">
+                <h3>Cấu hình thông số hệ thống</h3>
+                <div class="form-layout">
+                    <h4>Cài đặt giá điện, nước, phòng ở</h4>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="electricity-price">Giá điện (VND/kWh)</label>
+                            <input type="number" id="electricity-price">
+                        </div>
+                        <div class="form-group">
+                            <label for="water-price">Giá nước (VND/m³)</label>
+                            <input type="number" id="water-price">
+                        </div>
+                        <div class="form-group">
+                            <label for="room-price-4">Giá phòng 4 SV (VND/tháng)</label>
+                            <input type="number" id="room-price-4">
+                        </div>
+                        <div class="form-group">
+                            <label for="room-price-8">Giá phòng 8 SV (VND/tháng)</label>
+                            <input type="number" id="room-price-8">
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button id="save-config-btn" class="btn">Lưu thay đổi</button>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 40px;">Nhật ký hoạt động (BR3)</h3>
+                <div class="card-info" style="border-left: none;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Thời gian</th>
+                                <th>Người thực hiện</th>
+                                <th>Hành động</th>
+                                <th>Chi tiết</th>
+                            </tr>
+                        </thead>
+                        <tbody id="activity-log-body">
+                            <!-- Log entries will be populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../js/state_manager.js"></script>
+    <script src="../js/configuration.js"></script>
+</body>
+</html>

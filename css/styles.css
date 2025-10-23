@@ -1,0 +1,435 @@
+:root {
+    --vlu-blue: #003366;
+    --light-gray: #f4f4f4;
+    --white: #ffffff;
+    --dark-text: #333;
+    --light-text: #fff;
+    --border-color: #ddd;
+    --danger-color: #dc3545;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--light-gray);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+.login-container {
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.logo {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: var(--vlu-blue);
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--dark-text);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--vlu-blue);
+    color: var(--light-text);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #002244;
+}
+
+/* Dashboard Layout */
+.dashboard-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--light-gray);
+}
+
+.sidebar {
+    width: 250px;
+    background-color: var(--vlu-blue);
+    color: var(--light-text);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    flex-shrink: 0;
+}
+
+.sidebar-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.sidebar-header .logo {
+    width: 100px;
+}
+
+.sidebar-header h3 {
+    margin: 10px 0 0;
+    color: var(--white);
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-nav li a {
+    display: block;
+    padding: 15px 20px;
+    color: var(--light-text);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar-nav li.active a,
+.sidebar-nav li a:hover {
+    background-color: #004488;
+}
+
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.search-bar input {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+}
+
+.user-profile span {
+    margin-right: 15px;
+    font-weight: bold;
+    color: var(--dark-text);
+}
+
+.logout-btn {
+    text-decoration: none;
+    color: var(--vlu-blue);
+    font-weight: bold;
+}
+
+.content-body {
+    padding: 20px;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+/* --- UI IMPROVEMENT: Center Content --- */
+.content-body > div {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.content-body h3 {
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+/* --- END UI IMPROVEMENT --- */
+
+.notification-banner {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    color: var(--dark-text);
+    background-color: var(--warning-color);
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.card-info {
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border-left: 5px solid var(--vlu-blue);
+}
+
+.card-info.interactive {
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-info.interactive:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-info h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--dark-text);
+}
+
+.card-info p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.metric {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--vlu-blue);
+}
+
+.metric-finance {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--danger-color);
+}
+
+.details-link {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: var(--vlu-blue);
+    font-weight: bold;
+}
+
+.status-approved { color: var(--success-color); font-weight: bold; }
+.status-pending { color: var(--warning-color); font-weight: bold; }
+.status-rejected { color: var(--danger-color); font-weight: bold; }
+
+.filter-bar {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    background-color: var(--white);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.filter-bar .form-group { margin-bottom: 0; }
+.room-card { border-left: 5px solid var(--success-color); }
+.room-card button:disabled { background-color: #aaa; cursor: not-allowed; }
+
+.form-layout {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 700px;
+    margin: 0 auto; /* Center the form layout */
+}
+
+.form-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+.form-actions .btn { width: auto; } /* Allow buttons to size to content */
+
+.btn-secondary { background-color: #6c757d; }
+.btn-secondary:hover { background-color: #5a6268; }
+.btn-danger { background-color: var(--danger-color); }
+.btn-danger:hover { background-color: #c82333; }
+.error-message { color: var(--danger-color); margin-top: 15px; }
+
+.data-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+.data-table th, .data-table td { text-align: left; padding: 12px 15px; border-bottom: 1px solid var(--border-color); }
+.data-table th { background-color: #f8f9fa; color: var(--vlu-blue); }
+.data-table tr:hover { background-color: #f1f1f1; }
+.row-overdue { background-color: #fff3cd !important; }
+
+.badge { padding: 5px 10px; border-radius: 12px; font-size: 0.85em; font-weight: bold; color: white; display: inline-block; }
+.badge-paid { background-color: var(--success-color); }
+.badge-unpaid { background-color: var(--warning-color); color: var(--dark-text); }
+.badge-overdue { background-color: var(--danger-color); }
+
+.btn-sm { padding: 6px 12px; font-size: 14px; }
+
+#payment-gateway-view { justify-content: center; align-items: center; min-height: 500px; }
+.gateway-container { background: var(--white); width: 100%; max-width: 500px; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); overflow: hidden; }
+.gateway-header { background: #f8f9fa; padding: 15px 20px; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; gap: 15px; }
+.gateway-header h4 { margin: 0; color: #333; }
+.gateway-body { padding: 20px; }
+.payment-methods { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+.method-option { padding: 10px; border: 1px solid var(--border-color); border-radius: 4px; cursor: pointer; }
+.gateway-form { background: #f9f9f9; padding: 15px; border-radius: 4px; }
+.gateway-footer { padding: 15px 20px; background: #f8f9fa; border-top: 1px solid var(--border-color); display: flex; justify-content: flex-end; gap: 10px; }
+
+.modal { position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; }
+.modal-content { background-color: var(--white); padding: 30px; border-radius: 8px; width: 400px; text-align: center; position: relative; }
+.close-modal { position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: #aaa; }
+
+.alert-message { padding: 15px; margin-bottom: 20px; border: 1px solid transparent; border-radius: 4px; }
+.alert-danger { color: #721c24; background-color: #f8d7da; border-color: #f5c6cb; }
+.alert-info { color: #0c5460; background-color: #d1ecf1; border-color: #bee5eb; }
+
+form button:disabled { background-color: #aaa; cursor: not-allowed; }
+form input:disabled, form select:disabled, form textarea:disabled { background-color: #e9ecef; opacity: 0.7; }
+
+/* Appended to css/styles.css */
+
+/* Split View Layout for Admin Pages */
+.split-view-container {
+    display: flex;
+    gap: 20px;
+    height: calc(100vh - 150px); /* Adjust height based on header/padding */
+}
+
+.list-panel {
+    width: 35%;
+    min-width: 300px;
+    background-color: var(--white);
+    border-radius: 8px;
+    overflow-y: auto;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.detail-panel {
+    width: 65%;
+}
+
+.detail-panel .card-info {
+    margin-bottom: 20px;
+}
+
+/* Item List Styling */
+.item-list .list-item {
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.item-list .list-item:hover {
+    background-color: #f8f9fa;
+}
+
+.item-list .list-item.active {
+    background-color: #e0e7ff;
+    border-left: 4px solid var(--vlu-blue);
+}
+
+.list-item strong {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--dark-text);
+}
+
+.list-item span {
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* Verification Checks Styling */
+.verification-checks p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--border-color);
+}
+.verification-checks p:last-child {
+    border-bottom: none;
+}
+
+/* Appended to css/styles.css */
+
+/* Blockquote for displaying reasons */
+blockquote {
+    margin: 10px 0;
+    padding: 10px 15px;
+    background-color: #f8f9fa;
+    border-left: 4px solid var(--border-color);
+    font-style: italic;
+    color: #555;
+}
+
+/* Appended to css/styles.css */
+
+/* Checklist for Damage Inspection */
+.checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.checklist label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+/* Appended to css/styles.css */
+
+/* Grid layout for forms with multiple columns */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handle Room Transfers - VLU KTX</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="https://www.vlu.edu.vn/images/logo-van-lang-800.png" alt="VLU Logo" class="logo">
+                <h3>Admin Portal</h3>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html">Trang chủ</a></li>
+                    <li><a href="review_registrations.html">Duyệt hồ sơ đăng ký</a></li>
+                    <li class="active"><a href="handle_transfer.html">Xử lý chuyển phòng</a></li>
+                    <li><a href="payment_confirm.html">Quản lý thanh toán</a></li>
+                    <li><a href="checkout_process.html">Xử lý trả phòng</a></li>
+                    <li><a href="configuration.html">Cấu hình hệ thống</a></li>
+                    <li><a href="reports.html">Báo cáo & Thống kê</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="header">
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm chức năng, sinh viên...">
+                </div>
+                <div class="user-profile">
+                    <span id="admin-name">Chị B</span>
+                    <a href="../index.html" class="logout-btn">Logout</a>
+                </div>
+            </header>
+            <div class="content-body">
+                <h3>Xử lý yêu cầu chuyển phòng (<span id="queue-count-transfer">0</span>)</h3>
+                <div class="split-view-container">
+                    <!-- Left Panel: List of pending transfers -->
+                    <div class="list-panel">
+                        <div id="pending-list-transfer" class="item-list">
+                            <!-- Transfer request items will be populated by JS -->
+                        </div>
+                    </div>
+                    <!-- Right Panel: Details of selected request -->
+                    <div class="detail-panel">
+                        <div id="select-prompt-transfer" class="card-info">
+                            <p>Vui lòng chọn một yêu cầu từ danh sách để xem chi tiết.</p>
+                        </div>
+                        <div id="verification-panel-transfer" style="display: none;">
+                            <h4 id="student-name-header-transfer"></h4>
+                            <div class="card-info">
+                                <h5>Thông tin yêu cầu</h5>
+                                <p><strong>Từ phòng:</strong> <span id="current-room-info"></span></p>
+                                <p><strong>Chuyển đến:</strong> <span id="desired-room-info"></span></p>
+                                <p><strong>Lý do chính đáng (BR3):</strong></p>
+                                <blockquote id="reason-display"></blockquote>
+                            </div>
+                            <div class="card-info">
+                                <h5>Kiểm tra điều kiện</h5>
+                                <div class="verification-checks">
+                                    <p><strong>Tình trạng công nợ (BR2):</strong> <span id="fee-status-check-transfer"></span></p>
+                                    <p><strong>Phòng mới có chỗ trống (BR3):</strong> <span id="room-availability-check"></span></p>
+                                </div>
+                                <div id="rejection-reason-transfer" class="alert-message alert-danger" style="display: none;"></div>
+                            </div>
+                             <!-- Action Buttons -->
+                            <div class="form-actions">
+                                <button id="reject-btn-transfer" class="btn btn-danger">Từ chối</button>
+                                <button id="approve-btn-transfer" class="btn">Chấp thuận chuyển</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../js/state_manager.js"></script>
+    <script src="../js/handle_transfer.js"></script>
+</body>
+</html>

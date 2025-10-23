@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dormitory Registration - VLU KTX</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="https://www.vlu.edu.vn/images/logo-van-lang-800.png" alt="VLU Logo" class="logo">
+                <h3>KTX Portal</h3>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html">Trang chủ</a></li>
+                    <li class="active"><a href="register.html">Đăng ký phòng</a></li>
+                    <li><a href="fees.html">Thanh toán phí</a></li>
+                    <li><a href="transfer_request.html">Yêu cầu chuyển phòng</a></li>
+                    <li><a href="checkout_request.html">Yêu cầu trả phòng</a></li>
+                    <li><a href="incident_report.html">Báo cáo sự cố</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="header">
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm chức năng, sinh viên...">
+                </div>
+                <div class="user-profile">
+                    <span>Nguyễn Văn A</span>
+                    <a href="../index.html" class="logout-btn">Logout</a>
+                </div>
+            </header>
+            <div class="content-body">
+                <!-- Step 1 & 2: Search and Select Room -->
+                <div id="room-selection-view">
+                    <h3>Tìm kiếm và chọn phòng</h3>
+                    <div class="filter-bar">
+                        <div class="form-group">
+                            <label for="location-filter">Cơ sở</label>
+                            <select id="location-filter">
+                                <option value="all">Tất cả</option>
+                                <option value="Cơ sở 1">Cơ sở 1</option>
+                                <option value="Cơ sở 3">Cơ sở 3</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="gender-filter">Khu ở</label>
+                            <select id="gender-filter">
+                                <option value="all">Tất cả</option>
+                                <option value="Nam">Nam</option>
+                                <option value="Nữ">Nữ</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="capacity-filter">Loại phòng</label>
+                            <select id="capacity-filter">
+                                <option value="all">Tất cả</option>
+                                <option value="4">Phòng 4 SV</option>
+                                <option value="8">Phòng 8 SV</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="room-listing" class="cards-container">
+                        <!-- Room cards will be dynamically inserted here by JS -->
+                    </div>
+                </div>
+
+                <!-- Step 3: Fill Registration Form -->
+                <div id="registration-form-view" style="display: none;">
+                    <h3>Điền thông tin đăng ký</h3>
+                    <p>Bạn đang đăng ký phòng: <strong id="selected-room-info"></strong></p>
+                    <form id="registration-form" class="form-layout">
+                        <div class="form-group">
+                            <label for="full-name">Họ và tên</label>
+                            <input type="text" id="full-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="student-id">MSSV</label>
+                            <input type="text" id="student-id" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone-number">Số điện thoại</label>
+                            <input type="tel" id="phone-number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="documents">Tải lên giấy tờ (giả lập)</label>
+                            <input type="file" id="documents" required>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" id="back-to-selection-btn" class="btn btn-secondary">Quay lại</button>
+                            <button type="submit" class="btn">Gửi hồ sơ đăng ký</button>
+                        </div>
+                        <p id="form-error" class="error-message" style="display: none;">Vui lòng điền đầy đủ thông tin và tải lên giấy tờ.</p>
+                    </form>
+                </div>
+
+                <!-- Step 5: Track Status -->
+                <div id="status-tracking-view" style="display: none;">
+                    <h3>Theo dõi kết quả phê duyệt</h3>
+                    <div class="card-info">
+                        <h4>Trạng thái hồ sơ của bạn</h4>
+                        <p><strong>Phòng đã chọn:</strong> <span id="status-room-info"></span></p>
+                        <p><strong>Trạng thái:</strong> <span class="status-pending">Chờ phê duyệt</span></p>
+                        <p>Cảm ơn bạn đã gửi hồ sơ. BQL KTX sẽ xem xét và phản hồi trong thời gian sớm nhất. Bạn có thể theo dõi trạng thái tại đây hoặc trên trang chủ.</p>
+                        <div class="form-actions">
+                            <button id="cancel-registration-btn" class="btn btn-danger">Huỷ đăng ký</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+    <script src="../js/state_manager.js"></script>
+    <script src="../js/register.js"></script>
+</body>
+</html>
