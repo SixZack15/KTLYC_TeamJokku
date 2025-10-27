@@ -8,6 +8,7 @@
     --danger-color: #dc3545;
     --success-color: #28a745;
     --warning-color: #ffc107;
+    --vlu-red: #d72134;
 }
 
 body {
@@ -40,7 +41,7 @@ body {
 }
 
 h1 {
-    color: var(--vlu-blue);
+    color: var(--vlu-red);
     margin-bottom: 20px;
 }
 
@@ -68,7 +69,7 @@ h1 {
 .btn {
     width: 100%;
     padding: 12px;
-    background-color: var(--vlu-blue);
+    background-color: var(--vlu-red);
     color: var(--light-text);
     border: none;
     border-radius: 4px;
@@ -91,12 +92,13 @@ h1 {
 
 .sidebar {
     width: 250px;
-    background-color: var(--vlu-blue);
+    background-color: var(--white);
     color: var(--light-text);
     display: flex;
     flex-direction: column;
     padding: 20px;
     flex-shrink: 0;
+    box-shadow: 0px 5px 0px 5px;
 }
 
 .sidebar-header {
@@ -110,7 +112,7 @@ h1 {
 
 .sidebar-header h3 {
     margin: 10px 0 0;
-    color: var(--white);
+    color: var(--dark-text);
 }
 
 .sidebar-nav ul {
@@ -122,7 +124,7 @@ h1 {
 .sidebar-nav li a {
     display: block;
     padding: 15px 20px;
-    color: var(--light-text);
+    color: var(--dark-text);
     text-decoration: none;
     border-radius: 4px;
     transition: background-color 0.3s ease;
@@ -130,7 +132,8 @@ h1 {
 
 .sidebar-nav li.active a,
 .sidebar-nav li a:hover {
-    background-color: #004488;
+    background-color: var(--vlu-red);
+    color: var(--light-text);
 }
 
 .main-content {
@@ -171,7 +174,7 @@ h1 {
 
 .logout-btn {
     text-decoration: none;
-    color: var(--vlu-blue);
+    color: var(--vlu-red);
     font-weight: bold;
 }
 
@@ -190,6 +193,7 @@ h1 {
 .content-body h3 {
     margin-top: 10px;
     margin-bottom: 25px;
+    
 }
 /* --- END UI IMPROVEMENT --- */
 
@@ -212,7 +216,7 @@ h1 {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    border-left: 5px solid var(--vlu-blue);
+    border-left: 5px solid var(--vlu-red);
 }
 
 .card-info.interactive {
